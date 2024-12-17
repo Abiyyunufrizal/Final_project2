@@ -1,0 +1,124 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #1278ff;
+    margin: 0;
+    padding: 0;        body {
+        font-family: Arial, sans-serif;
+    }
+
+    .hero {
+        background: linear-gradient(to bottom right, #4e73df, #224abe);
+        color: white;
+        padding: 50px 0;
+        text-align: center;
+    }
+
+    .feature {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .feature h3 {
+        margin-top: 15px;
+    }
+}
+
+/* Container Styling */
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form .form-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+form .form-control {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #495057;
+}
+
+form .form-control:focus {
+    border-color: #80bdff;
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
+}
+
+/* Button Styling */
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Header Styling */
+h1 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.border {
+    border: 1px solid #ced4da;
+}
+
+.rounded {
+    border-radius: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+}
+body {
+    font-family: Arial, sans-serif;
+}
+
+.hero {
+    background: linear-gradient(to bottom right, #4e73df, #224abe);
+    color: white;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.feature {
+    padding: 20px;
+    text-align: center;
+}
+
+.feature h3 {
+    margin-top: 15px;
+}

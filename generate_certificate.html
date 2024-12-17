@@ -1,0 +1,164 @@
+<?php
+// Check if form was submitted
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Handle file uploads
+    $template_image = $_FILES['template_image']['tmp_name'];
+    $logo_image = $_FILES['logo_image']['tmp_name'];
+
+    // Get form data
+    $event_name = $_POST['event_name'];
+    $recipient_name = $_POST['recipient_name'];
+    $date = $_POST['date'];
+    $text_color = $_POST['text_color'];
+    $font_size = $_POST['font_size'];
+
+    // Create certificate image
+    $image = imagecreatefromstring(file_get_contents($template_image));
+    $logo = imagecreatefromstring(file_get_contents($logo_image));
+
+    // Add event name
+    $color = imagecolorallocate($image, hexdec(substr($text_color, 1, 2)), hexdec(substr($text_color, 3, 2)), hexdec(substr($text_color, 5, 2)));
+    imagettftext($image, $font_size + 10, 0, 50, 100, $color, __DIR__ . '/fonts/arial.ttf', $event_name);
+
+    // Add recipient name
+    imagettftext($image, $font_size, 0, 50, 200, $color, __DIR__ . '/fonts/arial.ttf', $recipient_name);
+
+    // Add date
+    imagettftext($image, $font_size, 0, 50, 300, $color, __DIR__ . '/fonts/arial.ttf', $date);
+
+    // Add logo
+    $logo_width = 100;
+    $logo_height = 100;
+    imagecopyresized($image, $logo, 50, 400, 0, 0, $logo_width, $logo_height, imagesx($logo), imagesy($logo));
+
+    // Output certificate as image
+    header('Content-Type: image/png');
+    imagepng($image);
+    imagedestroy($image);
+    imagedestroy($logo);
+    exit;
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Certificate Generator</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="file"],
+input[type="color"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #28a745;
+    border-radius: 8px;
+}
+    </style>
+</head>
+<body>
+    <h1>Event Certificate Generator</h1>
+    <form method="post" enctype="multipart/form-data">
+        <div>
+            <label for="template_image">Upload Template Image:</label>
+            <input type="file" id="template_image" name="template_image" required>
+        </div>
+        <div>
+            <label for="logo_image">Upload Logo Image:</label>
+            <input type="file" id="logo_image" name="logo_image" required>
+        </div>
+        <div>
+            <label for="event_name">Event Name:</label>
+            <input type="text" id="event_name" name="event_name" required>
+        </div>
+        <div>
+            <label for="recipient_name">Recipient Name:</label>
+            <input type="text" id="recipient_name" name="recipient_name" required>
+        </div>
+        <div>
+            <label for="date">Date:</label>
+            <input type="text" id="date" name="date" required>
+        </div>
+        <div>
+            <label for="text_color">Text Color:</label>
+            <input type="color" id="text_color" name="text_color" value="#000000" required>
+        </div>
+        <div>
+            <label for="font_size">Font Size:</label>
+            <select id="font_size" name="font_size" required>
+                <option value="18">Small</option>
+                <option value="24" selected>Medium</option>
+                <option value="36">Large</option>
+            </select>
+        </div>
+        <button type="submit">Generate Certificate</button>
+    </form>
+
+    <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') { ?>
+        <h2>Certificate Preview:</h2>
+        <img src="<?php echo $_SERVER['PHP_SELF']; ?>" alt="Certificate">
+    <?php } ?>
+</body>
+</html>
