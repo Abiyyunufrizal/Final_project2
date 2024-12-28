@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mycertificate</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -50,7 +49,7 @@
                         <a class="nav-link" href="#">Galery</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="masuk.php">Login</a>
+                        <a class="nav-link" href="login.php">Login</a>
                     </li>
                 </ul>
             </div>
@@ -62,7 +61,7 @@
         <div class="container">
             <h1>Buat Sertifikat Acara Profesional dengan Mudah</h1>
             <p>Rancang, sesuaikan, dan bagikan sertifikat untuk acara Anda hanya dengan beberapa klik.</p>
-            <a href="mm" class="btn btn-light btn-lg">Get Started</a>
+            <a href="generate_certificate.php" class="btn btn-light btn-lg">Get Started</a>
         </div>
     </section>
 

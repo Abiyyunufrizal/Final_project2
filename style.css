@@ -2,27 +2,9 @@
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f8f9fa;
-    color: #1278ff;
+    color: #333;
     margin: 0;
-    padding: 0;        body {
-        font-family: Arial, sans-serif;
-    }
-
-    .hero {
-        background: linear-gradient(to bottom right, #4e73df, #224abe);
-        color: white;
-        padding: 50px 0;
-        text-align: center;
-    }
-
-    .feature {
-        padding: 20px;
-        text-align: center;
-    }
-
-    .feature h3 {
-        margin-top: 15px;
-    }
+    padding: 0;
 }
 
 /* Container Styling */
@@ -102,23 +84,4 @@ h1 {
     h1 {
         font-size: 24px;
     }
-}
-body {
-    font-family: Arial, sans-serif;
-}
-
-.hero {
-    background: linear-gradient(to bottom right, #4e73df, #224abe);
-    color: white;
-    padding: 50px 0;
-    text-align: center;
-}
-
-.feature {
-    padding: 20px;
-    text-align: center;
-}
-
-.feature h3 {
-    margin-top: 15px;
 }
